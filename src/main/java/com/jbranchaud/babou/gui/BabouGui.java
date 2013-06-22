@@ -30,10 +30,10 @@ public class BabouGui extends JFrame {
 	public BabouGui(String name) {
 		super(name);
 		setResizable(true);
+		initialize(this);
 	}
 
-	private static void createAndShowGUI() {
-		BabouGui frame = new BabouGui(GuiConstants.FRAME_TITLE);
+	private static void createAndShowGUI(JFrame frame) {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// add stuff to the frame's content pane
@@ -103,8 +103,9 @@ public class BabouGui extends JFrame {
 		commitScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		panel.add(commitScrollPane);
 	}
-
-	public static void main(String[] args) {
+	
+	private static void initialize(final JFrame frame) {
+		
 		try {
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
 		} catch(UnsupportedLookAndFeelException e) {
@@ -120,8 +121,13 @@ public class BabouGui extends JFrame {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				createAndShowGUI();
+				createAndShowGUI(frame);
 			}
 		});
+	}
+
+	public static void main(String[] args) {
+		
+		BabouGui babouGui = new BabouGui(GuiConstants.FRAME_TITLE);
 	}
 }
