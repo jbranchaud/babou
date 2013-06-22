@@ -3,10 +3,18 @@ package com.jbranchaud.babou.models;
 public class BabouRepository {
 	private String localPath;
 
+	/**
+	 * Default constructor.
+	 */
 	public BabouRepository() {
-
 	}
 
+	/**
+	 * Full constructor.
+	 * 
+	 * @param localPath
+	 *            The local repository path.
+	 */
 	public BabouRepository(final String localPath) {
 		this.localPath = localPath;
 	}
