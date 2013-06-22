@@ -1,9 +1,9 @@
 package com.jbranchaud.babou.manager.impls;
 
-import com.jbranchaud.babou.manager.RepoManager;
+import com.jbranchaud.babou.manager.AbstractRepoManager;
 import com.jbranchaud.babou.models.BabouChangeset;
 
-public class SvnManager extends RepoManager {
+public class SvnManager extends AbstractRepoManager {
 	public SvnManager(final String localRepo) {
 		super(localRepo);
 	}
