@@ -47,6 +47,7 @@ public class GitManager extends AbstractRepoManager {
 		final IndexDiff diff;
 		try {
 			diff = new IndexDiff(repo, Constants.HEAD, iterator);
+			diff.diff();
 		} catch (IOException e) {
 			log.error("Unable to create diff for repo {}.", repo);
 			throw new IllegalStateException("Unable to create diff for repo.", e);
