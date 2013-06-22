@@ -36,7 +36,7 @@ public class BabouGui extends JFrame {
 		initialize(this);
 	}
 
-	private static void createAndShowGUI(JFrame frame) {
+	private void createAndShowGUI(JFrame frame) {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// add stuff to the frame's content pane
@@ -47,7 +47,7 @@ public class BabouGui extends JFrame {
 		frame.setVisible(true);
 	}
 
-	private static void addComponentsToPane(final Container pane) {
+	private void addComponentsToPane(final Container pane) {
 
 		//pane.setPreferredSize(new Dimension(pane.getParent().getWidth(), pane.getParent().getHeight()));
 		pane.setPreferredSize(new Dimension(
@@ -83,9 +83,9 @@ public class BabouGui extends JFrame {
 	 * the current File data using a ListModel.
 	 * This JScrollPane will be added to the JPanel.
 	 */
-	private static void addFileScrollPane(JPanel panel) {
+	private void addFileScrollPane(JPanel panel) {
 		final JList fileList = new JList(new String[] { "file1.txt", "file2.txt", "README.md", "src/Hello.py" });
-		final JScrollPane fileScrollPane = new JScrollPane(fileList);
+		this.fileScrollPane.setViewportView(fileList);
 		fileScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		fileScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		panel.add(fileScrollPane);
@@ -121,15 +121,15 @@ public class BabouGui extends JFrame {
 	 * the current commit components using a ListModel. This JScrollPane
 	 * will be added to the JPanel.
 	 */
-	private static void addCommitScrollPane(JPanel panel) {
+	private void addCommitScrollPane(JPanel panel) {
 		final JList commitList = new JList(new String[] { "file3.txt", "file4.txt" });
-		final JScrollPane commitScrollPane = new JScrollPane(commitList);
+		this.commitScrollPane.setViewportView(commitList);
 		commitScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		commitScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		panel.add(commitScrollPane);
 	}
 	
-	private static void initialize(final JFrame frame) {
+	private void initialize(final JFrame frame) {
 		
 		try {
 			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
