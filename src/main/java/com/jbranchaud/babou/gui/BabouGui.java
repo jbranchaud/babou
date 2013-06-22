@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -26,6 +27,8 @@ public class BabouGui extends JFrame {
     private static final Logger log = LoggerFactory.getLogger(BabouGui.class);
 	
 	private final static GridLayout mainLayout = new GridLayout(0,2);
+	private final JScrollPane fileScrollPane = new JScrollPane();
+	private final JScrollPane commitScrollPane = new JScrollPane();
 
 	public BabouGui(String name) {
 		super(name);
@@ -86,6 +89,28 @@ public class BabouGui extends JFrame {
 		fileScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		fileScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		panel.add(fileScrollPane);
+	}
+	
+	/*
+	 * setScrollPaneContents: JScrollPane, ListModel -> void
+	 * 
+	 * given a JScrollPane and a ListModel, this method will update the
+	 * contents of the JList that is displayed in the given JScrollPanel.
+	 */
+	public static void setScrollPaneContents(JScrollPane scrollPane, ListModel listModel) {
+		
+		final JList fileList = new JList(listModel);
+		scrollPane.setViewportView(fileList);
+	}
+	
+	/*
+	 * setFileScrollPaneContents: ListModel -> void
+	 * 
+	 * given a ListModel object that contains the list contents for the
+	 * JScrollPane's JList, this method will update the JList.
+	 */
+	public void setFileScrollPaneContents(ListModel listModel) {
+		setScrollPaneContents(this.fileScrollPane, listModel);
 	}
 
 	/*
