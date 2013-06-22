@@ -128,7 +128,7 @@ public class BabouGui extends JFrame {
 	private void initialize(final JFrame frame) {
 		
 		try {
-			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			UIManager.setLookAndFeel(GuiConstants.UI_LOOK_AND_FEEL);
 		} catch(UnsupportedLookAndFeelException e) {
 			System.out.println(e.getMessage());
 		} catch (ClassNotFoundException e) {

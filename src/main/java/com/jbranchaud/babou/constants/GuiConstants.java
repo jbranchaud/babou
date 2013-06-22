@@ -7,4 +7,7 @@ public final class GuiConstants {
 	// Text for Buttons
 	public static final String IMPLICIT_COMMIT_BUTTON_TEXT = "implicit";
 	public static final String COMMIT_BUTTON_TEXT = "commit";
+	
+	// Look and Feel Stuff
+	public static final String UI_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
 }
