@@ -1,8 +1,10 @@
 package com.joshbranchaud.babou.core;
 
-import java.util.List;
+import com.joshbranchaud.babou.models.BabouChangeSet;
 
 public interface RepoManager {
 	
-	public boolean commit(List<String> files, String message);
+	public boolean commit(BabouChangeSet changeSet, String message);
+	
+	public BabouChangeSet getChanges();
 }
