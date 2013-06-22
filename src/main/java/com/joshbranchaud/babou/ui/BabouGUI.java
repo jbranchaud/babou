@@ -1,5 +1,6 @@
 package com.joshbranchaud.babou.ui;
 
+import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -63,9 +64,11 @@ public class BabouGUI extends JPanel {
 	private static void createCommitList(final JFrame frame) {
 		// TODO: This needs to be refactored to get the real list of commits.
 		// final Map<String, List<String>> commits = someClass.getCommits();
-		final JList<String> list = new JList<String>(new String[] { "commit1", "commit2" });
+		final JList list = new JList(new String[] { "commit1", "commit2" });
 		final JScrollPane commitList = new JScrollPane(list);
-		commitList.setSize(frame.getContentPane().getWidth() / 2, frame.getContentPane().getHeight() / 2);
+		commitList.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		commitList.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		commitList.setSize(new Dimension(frame.getContentPane().getWidth() / 2, frame.getContentPane().getHeight() / 2));
 		frame.add(commitList, 1);
 	}
 
@@ -78,8 +81,10 @@ public class BabouGUI extends JPanel {
 	private static void createFilesList(final JFrame frame) {
 		// TODO: This needs to be refactored to get the real list of files.
 		// final List<String> files = someClass.getChangedFiles();
-		final JList<String> list = new JList<String>(new String[] { "first", "second", "third", "a", "a", "a", "a", "a", "a", "a" });
+		final JList list = new JList(new String[] { "first", "second", "third", "a", "a", "a", "a", "a", "a", "a" });
 		final JScrollPane filesList = new JScrollPane(list);
+		filesList.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		filesList.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		filesList.setSize(frame.getContentPane().getWidth() / 2, frame.getContentPane().getHeight() / 2);
 		frame.add(filesList, 0);
 	}
