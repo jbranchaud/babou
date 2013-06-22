@@ -25,6 +25,4 @@ public class GitManager extends RepoManager {
 		
 		return null;
 	}
-
-	
 }
