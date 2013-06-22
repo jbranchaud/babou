@@ -8,6 +8,10 @@ public class SVNManager extends RepoManager {
 
 	// TODO: Add an SVN specific Repository object here.
 	
+	public SVNManager(String localPath) {
+		super(localPath);
+	}
+	
 	public boolean commit(BabouChangeSet changeSet, String message) {
 		// TODO Auto-generated method stub
 		return false;
