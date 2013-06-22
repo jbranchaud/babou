@@ -16,6 +16,8 @@ public class BabouRepository {
 	
 	private String branch;
 	
+	private BabouChangeSet changeSet;
+	
 	public BabouRepository(String repoPath) {
 		
 		this.localPath = repoPath;
@@ -25,6 +27,15 @@ public class BabouRepository {
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
+		this.changeSet = new BabouChangeSet();
+	}
+
+	public BabouChangeSet getChangeSet() {
+		return changeSet;
+	}
+
+	public void setChangeSet(BabouChangeSet changeSet) {
+		this.changeSet = changeSet;
 	}
 
 	public String getLocalPath() {
