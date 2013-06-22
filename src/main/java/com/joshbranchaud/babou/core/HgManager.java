@@ -6,11 +6,11 @@ public class HgManager extends RepoManager {
 	/**
 	 * Full constructor.
 	 * 
-	 * @param localRepo
+	 * @param localPath
 	 *            The local repository.
 	 */
-	public HgManager(final String localRepo) {
-		
+	public HgManager(final String localPath) {
+		super(localPath);
 	}
 
 	@Override
