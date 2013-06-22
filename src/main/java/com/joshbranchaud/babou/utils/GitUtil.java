@@ -16,7 +16,7 @@ public class GitUtil {
 	 * and instantiate a jgit Repository object for it. The Repository
 	 * will be returned.
 	 */
-	public Repository getRepository(String repoPath) {
+	public static Repository getRepository(String repoPath) {
 		
 		// the repository we are instantiating
 		Repository repo = null;
