@@ -4,14 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jbranchaud.babou.gui.BabouGui;
-import com.jbranchaud.babou.manager.RepoManager;
+import com.jbranchaud.babou.manager.AbstractRepoManager;
 
 public class BabouController {
 	private static final Logger log = LoggerFactory.getLogger(BabouController.class);
 	private BabouGui gui;
-	private RepoManager manager;
+	private AbstractRepoManager manager;
 
-	public BabouController(final BabouGui gui, final RepoManager manager) {
+	public BabouController(final BabouGui gui, final AbstractRepoManager manager) {
 		this.gui = gui;
 		this.manager = manager;
 	}
@@ -34,7 +34,7 @@ public class BabouController {
 	/**
 	 * @return the manager
 	 */
-	public final RepoManager getManager() {
+	public final AbstractRepoManager getManager() {
 		return manager;
 	}
 
@@ -42,7 +42,7 @@ public class BabouController {
 	 * @param manager
 	 *            the manager to set
 	 */
-	public final void setManager(final RepoManager manager) {
+	public final void setManager(final AbstractRepoManager manager) {
 		this.manager = manager;
 	}
 

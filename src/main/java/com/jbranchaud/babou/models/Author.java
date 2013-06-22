@@ -1,13 +1,28 @@
 package com.jbranchaud.babou.models;
 
+/**
+ * Class that holds information about the commit author.
+ * 
+ * @author Dan Wiechert
+ */
 public class Author {
 	private String name;
 	private String email;
 
+	/**
+	 * Default constructor.
+	 */
 	public Author() {
-
 	}
 
+	/**
+	 * Full constructor.
+	 * 
+	 * @param name
+	 *            The author's name.
+	 * @param email
+	 *            The author's email.
+	 */
 	public Author(final String name, final String email) {
 		this.name = name;
 		this.email = email;
