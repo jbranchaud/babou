@@ -84,11 +84,9 @@ public class BabouGui extends JFrame {
 	 * This JScrollPane will be added to the JPanel.
 	 */
 	private void addFileScrollPane(JPanel panel) {
-		final JList fileList = new JList(new String[] { "file1.txt", "file2.txt", "README.md", "src/Hello.py" });
-		this.fileScrollPane.setViewportView(fileList);
-		fileScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		fileScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		panel.add(fileScrollPane);
+		this.fileScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		this.fileScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		panel.add(this.fileScrollPane);
 	}
 	
 	/*
@@ -122,11 +120,9 @@ public class BabouGui extends JFrame {
 	 * will be added to the JPanel.
 	 */
 	private void addCommitScrollPane(JPanel panel) {
-		final JList commitList = new JList(new String[] { "file3.txt", "file4.txt" });
-		this.commitScrollPane.setViewportView(commitList);
-		commitScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		commitScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		panel.add(commitScrollPane);
+		this.commitScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		this.commitScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		panel.add(this.commitScrollPane);
 	}
 	
 	private void initialize(final JFrame frame) {
