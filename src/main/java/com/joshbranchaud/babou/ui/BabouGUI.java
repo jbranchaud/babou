@@ -23,6 +23,9 @@ import javax.swing.SwingUtilities;
 public class BabouGUI extends JPanel {
 	private static final long serialVersionUID = 2837741791394299373L;
 
+	/**
+	 * Default constructor that sets up the gui.
+	 */
 	public BabouGUI() {
 		super(new BorderLayout());
 
