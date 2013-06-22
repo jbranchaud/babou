@@ -7,8 +7,6 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.RepositoryBuilder;
 
 public class GitUtil {
-
-	public final static RepositoryBuilder repoBuilder = new RepositoryBuilder();
 	
 	/*
 	 * getRepository: String -> Repository
@@ -30,6 +28,7 @@ public class GitUtil {
 				throw new InvalidRepositoryException(repoPath + " is not a valid repository location.");
 			}
 			
+			RepositoryBuilder repoBuilder = new RepositoryBuilder();
 			repo = repoBuilder.setGitDir(repoDir)
 								.readEnvironment()
 								.findGitDir()
