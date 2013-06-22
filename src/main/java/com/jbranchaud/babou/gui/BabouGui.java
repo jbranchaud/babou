@@ -90,25 +90,25 @@ public class BabouGui extends JFrame {
 	}
 	
 	/*
-	 * setScrollPaneContents: JScrollPane, ListModel -> void
+	 * updateScrollPaneContents: JScrollPane, ListModel -> void
 	 * 
 	 * given a JScrollPane and a ListModel, this method will update the
 	 * contents of the JList that is displayed in the given JScrollPanel.
 	 */
-	public static void setScrollPaneContents(JScrollPane scrollPane, ListModel listModel) {
+	public static void updateScrollPaneContents(JScrollPane scrollPane, ListModel listModel) {
 		
 		final JList fileList = new JList(listModel);
 		scrollPane.setViewportView(fileList);
 	}
 	
 	/*
-	 * setFileScrollPaneContents: ListModel -> void
+	 * updateFileScrollPaneContents: ListModel -> void
 	 * 
 	 * given a ListModel object that contains the list contents for the
 	 * JScrollPane's JList, this method will update the JList.
 	 */
-	public void setFileScrollPaneContents(ListModel listModel) {
-		setScrollPaneContents(this.fileScrollPane, listModel);
+	public void updateFileScrollPaneContents(ListModel listModel) {
+		updateScrollPaneContents(this.fileScrollPane, listModel);
 	}
 
 	/*
