@@ -9,8 +9,10 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import com.joshbranchaud.babou.models.BabouChangeSet;
 import com.joshbranchaud.babou.utils.GitUtil;
 
-public class GitManager implements RepoManager {
+public class GitManager extends RepoManager {
 
+	private Repository repository;
+	
 	public boolean commit(BabouChangeSet changeSet, String message) {
 		
 		Repository repo = GitUtil.getRepository("");

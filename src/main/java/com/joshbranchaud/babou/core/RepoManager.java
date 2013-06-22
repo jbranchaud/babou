@@ -2,9 +2,11 @@ package com.joshbranchaud.babou.core;
 
 import com.joshbranchaud.babou.models.BabouChangeSet;
 
-public interface RepoManager {
+public abstract class RepoManager {
 	
-	public boolean commit(BabouChangeSet changeSet, String message);
+	private BabouChangeSet changeSet;
 	
-	public BabouChangeSet getChanges();
+	public abstract boolean commit(BabouChangeSet changeSet, String message);
+	
+	public abstract BabouChangeSet getChanges();
 }
