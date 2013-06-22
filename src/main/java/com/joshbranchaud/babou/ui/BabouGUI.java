@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -40,7 +41,7 @@ public class BabouGUI extends JPanel {
 		babouComponent.setOpaque(true);
 		babouFrame.setContentPane(babouComponent);
 
-		babouFrame.setJMenuBar(createMenu());
+		createMenu(babouFrame);
 
 		babouFrame.setLocationByPlatform(true);
 		babouFrame.pack();
@@ -50,7 +51,7 @@ public class BabouGUI extends JPanel {
 	/**
 	 * Creates the menu bar.
 	 */
-	private static JMenuBar createMenu() {
+	private static void createMenu(final JFrame frame) {
 		final JMenuBar menuBar = new JMenuBar();
 
 		final JMenu fileMenu = new JMenu("File");
@@ -58,14 +59,26 @@ public class BabouGUI extends JPanel {
 		fileMenu.add(newItem);
 		final JMenuItem exitItem = new JMenuItem("Exit");
 		exitItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(final ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
 		fileMenu.add(exitItem);
 		menuBar.add(fileMenu);
-
-		return menuBar;
+		
+		final JMenu helpMenu = new JMenu("Help");
+		final JMenuItem settingsItem = new JMenuItem("Settings");
+		helpMenu.add(settingsItem);
+		final JMenuItem collaboratorsItem = new JMenuItem("Collaborators");
+		collaboratorsItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frame, "Created by Josh Branchaud and Dan Wiechert.");
+			}
+		});
+		helpMenu.add(collaboratorsItem);
+		menuBar.add(helpMenu);
+		
+		frame.setJMenuBar(menuBar);
 	}
 
 	/**
