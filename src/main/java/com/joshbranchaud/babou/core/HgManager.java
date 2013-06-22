@@ -1,21 +1,28 @@
 package com.joshbranchaud.babou.core;
 
-import java.util.List;
-
 import com.joshbranchaud.babou.models.BabouChangeSet;
 
 public class HgManager extends RepoManager {
-	
-	// TODO: Add a Mercurial specific Repository object here.
+	/**
+	 * Full constructor.
+	 * 
+	 * @param localRepo
+	 *            The local repository.
+	 */
+	public HgManager(final String localRepo) {
+		
+	}
 
+	@Override
 	public boolean commit(BabouChangeSet changeSet, String message) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	@Override
 	public BabouChangeSet getChanges() {
-		// TODO Auto-generated method stub
-		return null;
+		final BabouChangeSet changeSet = new BabouChangeSet();
+		return changeSet;
 	}
 
 }
