@@ -14,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import com.jbranchaud.babou.constants.GuiConstants;
+
 public class BabouGui extends JFrame {
 	
 	private static final long serialVersionUID = -3127516624535640822L;
@@ -26,7 +28,7 @@ public class BabouGui extends JFrame {
 	}
 
 	private static void createAndShowGUI() {
-		BabouGui frame = new BabouGui("Babou GUI");
+		BabouGui frame = new BabouGui(GuiConstants.FRAME_TITLE);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// add stuff to the frame's content pane
@@ -57,8 +59,8 @@ public class BabouGui extends JFrame {
 		final JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(mainLayout);
 
-		buttonPanel.add(new JButton("Implicit"));
-		buttonPanel.add(new JButton("Commit"));
+		buttonPanel.add(new JButton(GuiConstants.IMPLICIT_COMMIT_BUTTON_TEXT));
+		buttonPanel.add(new JButton(GuiConstants.COMMIT_BUTTON_TEXT));
 
 		// add the componentPanel to the content pane
 		pane.add(componentPanel, BorderLayout.CENTER);
