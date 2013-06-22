@@ -3,14 +3,30 @@ package com.jbranchaud.babou.models;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that holds information about a specific changeset.
+ * 
+ * @author Dan Wiechert
+ */
 public class BabouChangeset {
 	private Author author;
 	private List<AlteredFile> alteredFiles;
 
+	/**
+	 * Default constructor.
+	 */
 	public BabouChangeset() {
 		this.alteredFiles = new ArrayList<AlteredFile>();
 	}
 
+	/**
+	 * Full constructor.
+	 * 
+	 * @param author
+	 *            The {@link Author} of this changeset.
+	 * @param alteredFiles
+	 *            A {@link List} of {@link AlteredFile}s in this changeset.
+	 */
 	public BabouChangeset(final Author author, final List<AlteredFile> alteredFiles) {
 		this.author = author;
 		this.alteredFiles = alteredFiles;

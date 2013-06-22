@@ -2,14 +2,29 @@ package com.jbranchaud.babou.models;
 
 import com.jbranchaud.babou.enums.AlterationType;
 
+/**
+ * Class that holds information about the changed local file.
+ * 
+ * @author Dan Wiechert
+ */
 public class AlteredFile {
 	private String localPath;
 	private AlterationType type;
 
+	/**
+	 * Default constructor.
+	 */
 	public AlteredFile() {
-
 	}
 
+	/**
+	 * Full constructor.
+	 * 
+	 * @param localPath
+	 *            The local repository path.
+	 * @param type
+	 *            The {@link AlterationType} of the file.
+	 */
 	public AlteredFile(final String localPath, final AlterationType type) {
 		this.localPath = localPath;
 		this.type = type;

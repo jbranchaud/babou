@@ -1,9 +1,21 @@
 package com.jbranchaud.babou.manager.impls;
 
+import com.jbranchaud.babou.manager.AbstractRepoManager;
 import com.jbranchaud.babou.manager.RepoManager;
 import com.jbranchaud.babou.models.BabouChangeset;
 
-public class SvnManager extends RepoManager {
+/**
+ * Implementation of {@link RepoManager} that uses svn as the version control system.
+ * 
+ * @author Dan Wiechert
+ */
+public class SvnManager extends AbstractRepoManager {
+	/**
+	 * Full constructor.
+	 * 
+	 * @param localRepo
+	 *            The local repository path.
+	 */
 	public SvnManager(final String localRepo) {
 		super(localRepo);
 	}
@@ -19,5 +31,4 @@ public class SvnManager extends RepoManager {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }
