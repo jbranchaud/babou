@@ -31,5 +31,4 @@ public class HgManager extends AbstractRepoManager {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }
