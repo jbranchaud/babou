@@ -3,7 +3,10 @@ package com.jbranchaud.babou.manager.impls;
 import com.jbranchaud.babou.manager.RepoManager;
 import com.jbranchaud.babou.models.BabouChangeset;
 
-public class HgManager implements RepoManager {
+public class HgManager extends RepoManager {
+	public HgManager(final String localRepo) {
+		super(localRepo);
+	}
 
 	@Override
 	public BabouChangeset getChanges() {
