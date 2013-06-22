@@ -30,7 +30,6 @@ public class BabouGUI extends JPanel {
 	 */
 	public BabouGUI() {
 		setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-
 		setBorder(BorderFactory.createEmptyBorder(20, 20, Toolkit.getDefaultToolkit().getScreenSize().height / 2, Toolkit.getDefaultToolkit()
 				.getScreenSize().width / 2));
 	}
@@ -66,6 +65,7 @@ public class BabouGUI extends JPanel {
 		// final Map<String, List<String>> commits = someClass.getCommits();
 		final JList<String> list = new JList<String>(new String[] { "commit1", "commit2" });
 		final JScrollPane commitList = new JScrollPane(list);
+		commitList.setSize(frame.getContentPane().getWidth() / 2, frame.getContentPane().getHeight() / 2);
 		frame.add(commitList, 1);
 	}
 
@@ -80,6 +80,7 @@ public class BabouGUI extends JPanel {
 		// final List<String> files = someClass.getChangedFiles();
 		final JList<String> list = new JList<String>(new String[] { "first", "second", "third", "a", "a", "a", "a", "a", "a", "a" });
 		final JScrollPane filesList = new JScrollPane(list);
+		filesList.setSize(frame.getContentPane().getWidth() / 2, frame.getContentPane().getHeight() / 2);
 		frame.add(filesList, 0);
 	}
 
