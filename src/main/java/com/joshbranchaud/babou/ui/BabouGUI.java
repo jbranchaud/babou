@@ -65,7 +65,7 @@ public class BabouGUI extends JPanel {
 		});
 		fileMenu.add(exitItem);
 		menuBar.add(fileMenu);
-		
+
 		final JMenu helpMenu = new JMenu("Help");
 		final JMenuItem settingsItem = new JMenuItem("Settings");
 		helpMenu.add(settingsItem);
@@ -77,7 +77,7 @@ public class BabouGUI extends JPanel {
 		});
 		helpMenu.add(collaboratorsItem);
 		menuBar.add(helpMenu);
-		
+
 		frame.setJMenuBar(menuBar);
 	}
 
@@ -90,6 +90,8 @@ public class BabouGUI extends JPanel {
 	public static void main(String... args) {
 		// Schedule a job for the event-dispatching thread:
 		// creating and showing this application's GUI
+		// Reference -
+		// http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/components/RadioButtonDemoProject/src/components/RadioButtonDemo.java
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				createAndShowGUI();
