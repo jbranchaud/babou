@@ -1,10 +1,14 @@
 package com.jbranchaud.babou.controllers;
 
+import javax.swing.DefaultListModel;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jbranchaud.babou.gui.BabouGui;
 import com.jbranchaud.babou.manager.AbstractRepoManager;
+import com.jbranchaud.babou.models.AlteredFile;
+import com.jbranchaud.babou.models.BabouChangeset;
 
 public class BabouController {
 	private static final Logger log = LoggerFactory.getLogger(BabouController.class);
@@ -14,6 +18,27 @@ public class BabouController {
 	public BabouController(final BabouGui gui, final AbstractRepoManager manager) {
 		this.gui = gui;
 		this.manager = manager;
+	}
+
+	/*
+	 * updateFileList: none -> void
+	 * 
+	 * this method grabs the current RepoManager, gets the current change
+	 * set from that RepoManager and then uses that to update the FileList
+	 * in the BabouGui.
+	 */
+	public void updateFileList() {
+		
+		BabouChangeset currentChangeSet = this.manager.getChanges();
+		DefaultListModel updatedModelList = new DefaultListModel();
+		
+		// add all the change set items to the model list
+		for(AlteredFile file : currentChangeSet.getAlteredFiles()) {
+			updatedModelList.addElement(file.getLocalPath());
+		}
+		
+		// now update the GUI
+		this.gui.updateFileScrollPaneContents(updatedModelList);
 	}
 
 	/**
