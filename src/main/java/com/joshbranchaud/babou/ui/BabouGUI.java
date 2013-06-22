@@ -56,9 +56,19 @@ public class BabouGUI extends JPanel {
 		babouFrame.pack();
 		babouFrame.setVisible(true);
 	}
-	
+
+	/**
+	 * Creates the commit list.
+	 * 
+	 * @param frame
+	 *            The frame to add the commits to.
+	 */
 	private static void createCommitList(final JFrame frame) {
-		
+		// TODO: This needs to be refactored to get the real list of commits.
+		// final Map<String, List<String>> commits = someClass.getCommits();
+		final JList<String> list = new JList<String>(new String[] {"commit1", "commit2"});
+		final JScrollPane commitList = new JScrollPane(list);
+		frame.add(commitList, 1);
 	}
 
 	/**
@@ -69,6 +79,7 @@ public class BabouGUI extends JPanel {
 	 */
 	private static void createFilesList(final JFrame frame) {
 		// TODO: This needs to be refactored to get the real list of files.
+		// final List<String> files = someClass.getChangedFiles();
 		final JList<String> list = new JList<String>(new String[] { "first", "second", "third", "a", "a", "a", "a", "a", "a", "a" });
 		final JScrollPane filesList = new JScrollPane(list);
 		frame.add(filesList, 0);
