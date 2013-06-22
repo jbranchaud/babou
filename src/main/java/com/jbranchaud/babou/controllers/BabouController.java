@@ -1,9 +1,13 @@
 package com.jbranchaud.babou.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.jbranchaud.babou.gui.BabouGui;
 import com.jbranchaud.babou.manager.RepoManager;
 
 public class BabouController {
+	private static final Logger log = LoggerFactory.getLogger(BabouController.class);
 	private BabouGui gui;
 	private RepoManager manager;
 

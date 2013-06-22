@@ -3,7 +3,10 @@ package com.jbranchaud.babou.manager.impls;
 import com.jbranchaud.babou.manager.RepoManager;
 import com.jbranchaud.babou.models.BabouChangeset;
 
-public class GitManager implements RepoManager {
+public class GitManager extends RepoManager {
+	public GitManager(final String localRepo) {
+		super(localRepo);
+	}
 
 	@Override
 	public BabouChangeset getChanges() {
