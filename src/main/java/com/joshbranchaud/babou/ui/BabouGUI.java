@@ -1,6 +1,5 @@
 package com.joshbranchaud.babou.ui;
 
-import java.awt.BorderLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +15,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
 
 /**
@@ -66,7 +64,7 @@ public class BabouGUI extends JPanel {
 	private static void createCommitList(final JFrame frame) {
 		// TODO: This needs to be refactored to get the real list of commits.
 		// final Map<String, List<String>> commits = someClass.getCommits();
-		final JList<String> list = new JList<String>(new String[] {"commit1", "commit2"});
+		final JList<String> list = new JList<String>(new String[] { "commit1", "commit2" });
 		final JScrollPane commitList = new JScrollPane(list);
 		frame.add(commitList, 1);
 	}
@@ -99,6 +97,7 @@ public class BabouGUI extends JPanel {
 		fileMenu.add(newItem);
 		final JMenuItem exitItem = new JMenuItem("Exit");
 		exitItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(final ActionEvent arg0) {
 				System.exit(0);
 			}
@@ -111,7 +110,8 @@ public class BabouGUI extends JPanel {
 		helpMenu.add(settingsItem);
 		final JMenuItem collaboratorsItem = new JMenuItem("Collaborators");
 		collaboratorsItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			@Override
+			public void actionPerformed(final ActionEvent e) {
 				JOptionPane.showMessageDialog(frame, "Created by Josh Branchaud and Dan Wiechert.");
 			}
 		});
@@ -127,12 +127,13 @@ public class BabouGUI extends JPanel {
 	 * @param args
 	 *            Not used.
 	 */
-	public static void main(String... args) {
+	public static void main(final String... args) {
 		// Schedule a job for the event-dispatching thread:
 		// creating and showing this application's GUI
 		// Reference -
 		// http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/components/RadioButtonDemoProject/src/components/RadioButtonDemo.java
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				createAndShowGUI();
 			}
