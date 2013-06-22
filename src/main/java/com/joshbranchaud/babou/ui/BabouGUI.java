@@ -6,13 +6,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
 
 /**
@@ -27,7 +31,7 @@ public class BabouGUI extends JPanel {
 	 * Default constructor that sets up the gui.
 	 */
 	public BabouGUI() {
-		super(new BorderLayout());
+		setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 
 		setBorder(BorderFactory.createEmptyBorder(20, 20, Toolkit.getDefaultToolkit().getScreenSize().height / 2, Toolkit.getDefaultToolkit()
 				.getScreenSize().width / 2));
@@ -45,14 +49,36 @@ public class BabouGUI extends JPanel {
 		babouFrame.setContentPane(babouComponent);
 
 		createMenu(babouFrame);
+		createFilesList(babouFrame);
+		createCommitList(babouFrame);
 
 		babouFrame.setLocationByPlatform(true);
 		babouFrame.pack();
 		babouFrame.setVisible(true);
 	}
+	
+	private static void createCommitList(final JFrame frame) {
+		
+	}
+
+	/**
+	 * Creates the files list.
+	 * 
+	 * @param frame
+	 *            The frame to add the menu to.
+	 */
+	private static void createFilesList(final JFrame frame) {
+		// TODO: This needs to be refactored to get the real list of files.
+		final JList<String> list = new JList<String>(new String[] { "first", "second", "third", "a", "a", "a", "a", "a", "a", "a" });
+		final JScrollPane filesList = new JScrollPane(list);
+		frame.add(filesList, 0);
+	}
 
 	/**
 	 * Creates the menu bar.
+	 * 
+	 * @param frame
+	 *            The frame to add the menu to.
 	 */
 	private static void createMenu(final JFrame frame) {
 		final JMenuBar menuBar = new JMenuBar();
