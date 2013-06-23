@@ -3,6 +3,15 @@ package com.jbranchaud.babou.manager.impls;
 import java.io.File;
 import java.io.IOException;
 
+import org.eclipse.jgit.api.AddCommand;
+import org.eclipse.jgit.api.CommitCommand;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.ConcurrentRefUpdateException;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.NoHeadException;
+import org.eclipse.jgit.api.errors.NoMessageException;
+import org.eclipse.jgit.api.errors.UnmergedPathsException;
+import org.eclipse.jgit.api.errors.WrongRepositoryStateException;
 import org.eclipse.jgit.lib.Constants;
 import org.eclipse.jgit.lib.IndexDiff;
 import org.eclipse.jgit.lib.Repository;
@@ -42,7 +51,7 @@ public class GitManager extends AbstractRepoManager {
 	}
 
 	@Override
-	public BabouChangeset getChanges() {		
+	public BabouChangeset getChanges() {
 		final WorkingTreeIterator iterator = new FileTreeIterator(repo);
 		final IndexDiff diff;
 		try {
@@ -54,7 +63,7 @@ public class GitManager extends AbstractRepoManager {
 		}
 
 		final BabouChangeset changeSet = new BabouChangeset();
-		
+
 		// New files
 		for (final String added : diff.getAdded()) {
 			changeSet.getAlteredFiles().add(new AlteredFile(added, AlterationType.ADDED));
@@ -62,26 +71,51 @@ public class GitManager extends AbstractRepoManager {
 		for (final String untracked : diff.getUntracked()) {
 			changeSet.getAlteredFiles().add(new AlteredFile(untracked, AlterationType.ADDED));
 		}
-		
+
 		// Modified files
 		for (final String added : diff.getChanged()) {
 			changeSet.getAlteredFiles().add(new AlteredFile(added, AlterationType.MODIFIED));
 		}
-		for (final String modified :  diff.getModified()) {
+		for (final String modified : diff.getModified()) {
 			changeSet.getAlteredFiles().add(new AlteredFile(modified, AlterationType.MODIFIED));
 		}
-		
+
 		// Removed files
 		for (final String removed : diff.getRemoved()) {
 			changeSet.getAlteredFiles().add(new AlteredFile(removed, AlterationType.REMOVED));
 		}
-		
+
 		return changeSet;
 	}
 
 	@Override
 	public boolean commit(final BabouChangeset changeSet) {
-		// TODO Auto-generated method stub
-		return false;
+		final AddCommand add = new AddCommand(repo);
+		for (final AlteredFile file : changeSet.getAlteredFiles()) {
+			if (AlterationType.ADDED == file.getType()) {
+				add.addFilepattern(file.getLocalPath());
+			}
+		}
+		try {
+			add.call();
+		} catch (GitAPIException e) {
+			log.error("Unable to add all files.", e);
+			throw new IllegalStateException("Unable to add all files.", e);
+		}
+
+		final Git git = new Git(repo);
+		final CommitCommand commit = git.commit();
+		commit.setAuthor(changeSet.getAuthor().getName(), changeSet.getAuthor().getEmail());
+		for (final AlteredFile file : changeSet.getAlteredFiles()) {
+			commit.setOnly(file.getLocalPath());
+		}
+		try {
+			commit.call();
+		} catch (GitAPIException e) {
+			log.error("Unable to commit all files.", e);
+			throw new IllegalStateException("Unable to commit all files.", e);
+		}
+
+		return true;
 	}
 }
