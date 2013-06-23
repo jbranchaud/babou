@@ -10,6 +10,7 @@ public final class OcelotTranslator {
 	public static final String FILE_ANNOTATION_OPENING = "[";
 	public static final String FILE_ANNOTATION_CLOSING = "]";
 	public static final String FILE_ANNOTATION_DELIMITER = "|";
+	public static final String NEWLINE = System.getProperty("line.separator");
 	
 	/*
 	 * createOcelotAnnotation: Map<ArrayList<String, String> -> String
@@ -18,13 +19,20 @@ public final class OcelotTranslator {
 	 * this method will create the commit message utilizing the Ocelot
 	 * annotation specification.
 	 */
-	public static String createOcelotAnnotation(Map<ArrayList<String>, String> messages) {
+	public static String createOcelotAnnotation(String commitSummary, Map<ArrayList<String>, String> messageMapping) {
 		
-		String message = "";
+		String fullMessage = commitSummary + NEWLINE;
 		
+		ArrayList<String> messagePairings = new ArrayList<String>();
 		
+		for(ArrayList<String> filenames : messageMapping.keySet()) {
+			String message = messageMapping.get(filenames);
+			messagePairings.add(createFileAnnotation(filenames) + NEWLINE + message);
+		}
 		
-		return message;
+		fullMessage += StringUtils.join(messagePairings, NEWLINE);
+		
+		return fullMessage;
 	}
 	
 	/*
