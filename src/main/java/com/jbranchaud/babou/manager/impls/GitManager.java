@@ -14,6 +14,7 @@ import com.jbranchaud.babou.enums.AlterationType;
 import com.jbranchaud.babou.manager.AbstractRepoManager;
 import com.jbranchaud.babou.manager.RepoManager;
 import com.jbranchaud.babou.models.AlteredFile;
+import com.jbranchaud.babou.models.AnnotatedCommit;
 import com.jbranchaud.babou.models.BabouChangeset;
 
 /**
@@ -80,7 +81,7 @@ public class GitManager extends AbstractRepoManager {
 	}
 
 	@Override
-	public boolean commit(final BabouChangeset changeSet) {
+	public boolean commit(final AnnotatedCommit annotatedCommit) {
 		// TODO Auto-generated method stub
 		return false;
 	}

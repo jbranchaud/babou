@@ -1,5 +1,6 @@
 package com.jbranchaud.babou.manager;
 
+import com.jbranchaud.babou.models.AnnotatedCommit;
 import com.jbranchaud.babou.models.BabouChangeset;
 
 /**
@@ -22,5 +23,5 @@ public interface RepoManager {
 	 *            The {@link BabouChangeset} which holds all of the local changes to persist.
 	 * @return If the commit was succesful or not.
 	 */
-	public boolean commit(BabouChangeset changeSet);
+	public boolean commit(AnnotatedCommit annotatedCommit);
 }
