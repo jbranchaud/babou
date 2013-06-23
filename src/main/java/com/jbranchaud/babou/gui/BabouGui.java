@@ -69,7 +69,7 @@ public class BabouGui extends JFrame {
 		buttonPanel.setLayout(buttonLayout);
 
 		buttonPanel.add(new JButton(GuiConstants.REFRESH_BUTTON_TEXT));
-		buttonPanel.add(new JButton(GuiConstants.GROUP_BUTTON_TEXT));
+		buttonPanel.add(new JButton(GuiConstants.GROUP_TOGGLE_BUTTON_TEXT));
 		buttonPanel.add(new JButton(GuiConstants.IMPLICIT_COMMIT_BUTTON_TEXT));
 		buttonPanel.add(new JButton(GuiConstants.COMMIT_BUTTON_TEXT));
 
