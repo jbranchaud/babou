@@ -18,6 +18,7 @@ import com.jbranchaud.babou.enums.AlterationType;
 import com.jbranchaud.babou.manager.AbstractRepoManager;
 import com.jbranchaud.babou.manager.RepoManager;
 import com.jbranchaud.babou.models.AlteredFile;
+import com.jbranchaud.babou.models.AnnotatedCommit;
 import com.jbranchaud.babou.models.BabouChangeset;
 
 /**
@@ -84,7 +85,9 @@ public class GitManager extends AbstractRepoManager {
 	}
 
 	@Override
-	public boolean commit(final BabouChangeset changeSet) {
+	public boolean commit(final AnnotatedCommit annotatedCommit) {
+	//public boolean commit(final BabouChangeset changeSet) {
+        /*
 		final AddCommand add = new AddCommand(repo);
 		for (final AlteredFile file : changeSet.getAlteredFiles()) {
 			if (AlterationType.ADDED == file.getType()) {
@@ -110,6 +113,7 @@ public class GitManager extends AbstractRepoManager {
 			log.error("Unable to commit all files.", e);
 			throw new IllegalStateException("Unable to commit all files.", e);
 		}
+        */
 
 		return true;
 	}
