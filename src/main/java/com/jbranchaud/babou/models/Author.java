@@ -27,6 +27,22 @@ public class Author {
 		this.name = name;
 		this.email = email;
 	}
+	
+	/*
+	 * compare: Author -> boolean
+	 * 
+	 * given an Author object, this Author object will determine if the given
+	 * one is the same. If so, true is returned, otherwise, false is returned.
+	 */
+	public boolean compare(Author author) {
+		
+		if(!this.name.equals(author.getName())
+				|| !this.email.equals(author.getEmail())) {
+			return false;
+		}
+		
+		return true;
+	}
 
 	/**
 	 * @return the name
