@@ -13,6 +13,35 @@ public class AnnotatedFiles {
 		this.message = message;
 		this.filenames = filenames;
 	}
+	
+	/*
+	 * compare: AnnotatedFiles -> boolean
+	 * 
+	 * given another AnnotatedFiles class, this method will determine if
+	 * this AnnotatedFiles is the same as the given AnnotatedFiles
+	 * instance. If so, true is returned, otherwise false is returned.
+	 */
+	public boolean compare(AnnotatedFiles annotatedFiles) {
+		
+		// check the message first
+		if(!this.message.equals(annotatedFiles.getMessage())) {
+			return false;
+		}
+		
+		// check the length of the filename lists
+		if(!(this.filenames.size() == annotatedFiles.getFilenames().size())) {
+			return false;
+		}
+		
+		// check each of the filenames
+		for(String filename : annotatedFiles.getFilenames()) {
+			if(!this.filenames.contains(filename)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 
 	public String getMessage() {
 		return message;
