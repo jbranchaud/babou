@@ -52,6 +52,24 @@ public class OcelotTranslatorTest {
 	}
 	
 	@Test
+	public void testCreateOcelotAnnotation_implicit() {
+		
+		assertTrue(false);
+	}
+	
+	@Test
+	public void testCreateOcelotAnnotation_singleFile() {
+		
+		assertTrue(false);
+	}
+	
+	@Test
+	public void testCreateOcelotAnnotation_multiFile() {
+		
+		assertTrue(false);
+	}
+	
+	@Test
 	public void testCreateOcelotAnnotation() {
 		
 		assertTrue(false);
