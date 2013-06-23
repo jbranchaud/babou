@@ -29,7 +29,7 @@ public class AnnotatedFiles {
 		}
 		
 		// check the length of the filename lists
-		if(!(this.filenames.size() == annotatedFiles.getFilenames().size())) {
+		if(this.filenames.size() != annotatedFiles.getFilenames().size()) {
 			return false;
 		}
 		
