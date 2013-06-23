@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -26,14 +27,16 @@ public class BabouGui extends JFrame {
     private static final Logger log = LoggerFactory.getLogger(BabouGui.class);
 	
 	private final static GridLayout mainLayout = new GridLayout(0,2);
+	private final JScrollPane fileScrollPane = new JScrollPane();
+	private final JScrollPane commitScrollPane = new JScrollPane();
 
 	public BabouGui(String name) {
 		super(name);
 		setResizable(true);
+		initialize(this);
 	}
 
-	private static void createAndShowGUI() {
-		BabouGui frame = new BabouGui(GuiConstants.FRAME_TITLE);
+	private void createAndShowGUI(JFrame frame) {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// add stuff to the frame's content pane
@@ -44,7 +47,7 @@ public class BabouGui extends JFrame {
 		frame.setVisible(true);
 	}
 
-	private static void addComponentsToPane(final Container pane) {
+	private void addComponentsToPane(final Container pane) {
 
 		//pane.setPreferredSize(new Dimension(pane.getParent().getWidth(), pane.getParent().getHeight()));
 		pane.setPreferredSize(new Dimension(
@@ -80,12 +83,32 @@ public class BabouGui extends JFrame {
 	 * the current File data using a ListModel.
 	 * This JScrollPane will be added to the JPanel.
 	 */
-	private static void addFileScrollPane(JPanel panel) {
-		final JList fileList = new JList(new String[] { "file1.txt", "file2.txt", "README.md", "src/Hello.py" });
-		final JScrollPane fileScrollPane = new JScrollPane(fileList);
-		fileScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		fileScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		panel.add(fileScrollPane);
+	private void addFileScrollPane(JPanel panel) {
+		this.fileScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		this.fileScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		panel.add(this.fileScrollPane);
+	}
+	
+	/*
+	 * updateScrollPaneContents: JScrollPane, ListModel -> void
+	 * 
+	 * given a JScrollPane and a ListModel, this method will update the
+	 * contents of the JList that is displayed in the given JScrollPanel.
+	 */
+	public static void updateScrollPaneContents(JScrollPane scrollPane, ListModel listModel) {
+		
+		final JList fileList = new JList(listModel);
+		scrollPane.setViewportView(fileList);
+	}
+	
+	/*
+	 * updateFileScrollPaneContents: ListModel -> void
+	 * 
+	 * given a ListModel object that contains the list contents for the
+	 * JScrollPane's JList, this method will update the JList.
+	 */
+	public void updateFileScrollPaneContents(ListModel listModel) {
+		updateScrollPaneContents(this.fileScrollPane, listModel);
 	}
 
 	/*
@@ -96,17 +119,16 @@ public class BabouGui extends JFrame {
 	 * the current commit components using a ListModel. This JScrollPane
 	 * will be added to the JPanel.
 	 */
-	private static void addCommitScrollPane(JPanel panel) {
-		final JList commitList = new JList(new String[] { "file3.txt", "file4.txt" });
-		final JScrollPane commitScrollPane = new JScrollPane(commitList);
-		commitScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		commitScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		panel.add(commitScrollPane);
+	private void addCommitScrollPane(JPanel panel) {
+		this.commitScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		this.commitScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		panel.add(this.commitScrollPane);
 	}
-
-	public static void main(String[] args) {
+	
+	private void initialize(final JFrame frame) {
+		
 		try {
-			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+			UIManager.setLookAndFeel(GuiConstants.UI_LOOK_AND_FEEL);
 		} catch(UnsupportedLookAndFeelException e) {
 			System.out.println(e.getMessage());
 		} catch (ClassNotFoundException e) {
@@ -120,8 +142,13 @@ public class BabouGui extends JFrame {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				createAndShowGUI();
+				createAndShowGUI(frame);
 			}
 		});
+	}
+
+	public static void main(String[] args) {
+		
+		BabouGui babouGui = new BabouGui(GuiConstants.FRAME_TITLE);
 	}
 }
