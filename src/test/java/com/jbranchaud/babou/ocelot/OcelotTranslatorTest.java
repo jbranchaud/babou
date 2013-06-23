@@ -42,7 +42,13 @@ public class OcelotTranslatorTest {
 	@Test
 	public void testCreateFileAnnotation_emptyString() {
 		
-		assertTrue(false);
+		String filename = "";
+		
+		String annotatedFilename = "[]";
+		
+		String resultingAnnotation = OcelotTranslator.createFileAnnotation(filename);
+		
+		assertEquals(annotatedFilename, resultingAnnotation);
 	}
 	
 	@Test
