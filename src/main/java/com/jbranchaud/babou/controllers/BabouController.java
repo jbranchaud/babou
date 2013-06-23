@@ -6,16 +6,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jbranchaud.babou.gui.BabouGui;
-import com.jbranchaud.babou.manager.AbstractRepoManager;
+import com.jbranchaud.babou.manager.RepoManager;
 import com.jbranchaud.babou.models.AlteredFile;
 import com.jbranchaud.babou.models.BabouChangeset;
 
 public class BabouController {
+
 	private static final Logger log = LoggerFactory.getLogger(BabouController.class);
 	private BabouGui gui;
-	private AbstractRepoManager manager;
+	private RepoManager manager;
 
-	public BabouController(final BabouGui gui, final AbstractRepoManager manager) {
+	public BabouController(final BabouGui gui, final RepoManager manager) {
 		this.gui = gui;
 		this.manager = manager;
 	}
@@ -59,7 +60,7 @@ public class BabouController {
 	/**
 	 * @return the manager
 	 */
-	public final AbstractRepoManager getManager() {
+	public final RepoManager getManager() {
 		return manager;
 	}
 
@@ -67,7 +68,7 @@ public class BabouController {
 	 * @param manager
 	 *            the manager to set
 	 */
-	public final void setManager(final AbstractRepoManager manager) {
+	public final void setManager(final RepoManager manager) {
 		this.manager = manager;
 	}
 
