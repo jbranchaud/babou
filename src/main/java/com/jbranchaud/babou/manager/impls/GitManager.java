@@ -6,12 +6,7 @@ import java.io.IOException;
 import org.eclipse.jgit.api.AddCommand;
 import org.eclipse.jgit.api.CommitCommand;
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.ConcurrentRefUpdateException;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.NoHeadException;
-import org.eclipse.jgit.api.errors.NoMessageException;
-import org.eclipse.jgit.api.errors.UnmergedPathsException;
-import org.eclipse.jgit.api.errors.WrongRepositoryStateException;
 import org.eclipse.jgit.lib.Constants;
 import org.eclipse.jgit.lib.IndexDiff;
 import org.eclipse.jgit.lib.Repository;
@@ -44,7 +39,7 @@ public class GitManager extends AbstractRepoManager {
 		final RepositoryBuilder builder = new RepositoryBuilder();
 		try {
 			repo = builder.setGitDir(new File(localRepo)).readEnvironment().findGitDir().build();
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			log.error("Could not initialize with provided git repo {}.", localRepo);
 			throw new IllegalStateException("Could not initialize with provided git repo.", e);
 		}
@@ -57,7 +52,7 @@ public class GitManager extends AbstractRepoManager {
 		try {
 			diff = new IndexDiff(repo, Constants.HEAD, iterator);
 			diff.diff();
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			log.error("Unable to create diff for repo {}.", repo);
 			throw new IllegalStateException("Unable to create diff for repo.", e);
 		}
@@ -98,7 +93,7 @@ public class GitManager extends AbstractRepoManager {
 		}
 		try {
 			add.call();
-		} catch (GitAPIException e) {
+		} catch (final GitAPIException e) {
 			log.error("Unable to add all files.", e);
 			throw new IllegalStateException("Unable to add all files.", e);
 		}
@@ -111,7 +106,7 @@ public class GitManager extends AbstractRepoManager {
 		}
 		try {
 			commit.call();
-		} catch (GitAPIException e) {
+		} catch (final GitAPIException e) {
 			log.error("Unable to commit all files.", e);
 			throw new IllegalStateException("Unable to commit all files.", e);
 		}
