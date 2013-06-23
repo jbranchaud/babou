@@ -27,6 +27,7 @@ public class BabouGui extends JFrame {
     private static final Logger log = LoggerFactory.getLogger(BabouGui.class);
 	
 	private final static GridLayout mainLayout = new GridLayout(0,2);
+	private final static GridLayout buttonLayout = new GridLayout(0,4);
 	private final JScrollPane fileScrollPane = new JScrollPane();
 	private final JScrollPane commitScrollPane = new JScrollPane();
 
@@ -65,8 +66,10 @@ public class BabouGui extends JFrame {
 		addCommitScrollPane(componentPanel);
 
 		final JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(mainLayout);
+		buttonPanel.setLayout(buttonLayout);
 
+		buttonPanel.add(new JButton(GuiConstants.REFRESH_BUTTON_TEXT));
+		buttonPanel.add(new JButton(GuiConstants.GROUP_TOGGLE_BUTTON_TEXT));
 		buttonPanel.add(new JButton(GuiConstants.IMPLICIT_COMMIT_BUTTON_TEXT));
 		buttonPanel.add(new JButton(GuiConstants.COMMIT_BUTTON_TEXT));
 
