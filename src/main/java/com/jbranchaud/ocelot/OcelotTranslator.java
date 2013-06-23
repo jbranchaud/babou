@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.eclipse.jgit.util.StringUtils;
 
-public class OcelotTranslator {
+public final class OcelotTranslator {
 
 	public static final String FILE_ANNOTATION_OPENING = "[";
 	public static final String FILE_ANNOTATION_CLOSING = "]";
