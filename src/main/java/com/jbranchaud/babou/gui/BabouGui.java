@@ -28,8 +28,15 @@ public class BabouGui extends JFrame {
 	
 	private final static GridLayout mainLayout = new GridLayout(0,2);
 	private final static GridLayout buttonLayout = new GridLayout(0,4);
+	
+	// Altered File Pane
 	private final JScrollPane fileScrollPane = new JScrollPane();
+	private final JPanel alteredFilePanel = new JPanel();
+	
+	// Annotated Commit Pane
 	private final JScrollPane commitScrollPane = new JScrollPane();
+	private final JPanel annotatedCommitPanel = new JPanel();
+	
 
 	public BabouGui(String name) {
 		super(name);
@@ -125,7 +132,18 @@ public class BabouGui extends JFrame {
 	private void addCommitScrollPane(JPanel panel) {
 		this.commitScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		this.commitScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.annotatedCommitPanel.setLayout(new GridLayout(0,1));
+		this.commitScrollPane.getViewport().add(this.annotatedCommitPanel);
 		panel.add(this.commitScrollPane);
+		addSomeButtons(this.annotatedCommitPanel, 50);
+	}
+	
+	private static void addSomeButtons(JPanel panel, int number) {
+		
+		for(int i = 0; i < number; i++) {
+			panel.add(new JButton("Button " + i));
+			panel.validate();
+		}
 	}
 	
 	private void initialize(final JFrame frame) {
