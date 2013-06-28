@@ -6,6 +6,7 @@ import java.util.List;
  * Class that holds information about an annotated commit.
  * 
  * @author Dan Wiechert
+ * @author Josh Branchaud
  */
 public class AnnotatedCommit implements Comparable<AnnotatedCommit> {
 	private String commitSummary;

@@ -4,6 +4,7 @@ package com.jbranchaud.babou.models;
  * Class that holds information about the commit author.
  * 
  * @author Dan Wiechert
+ * @author Josh Branchaud
  */
 public class Author implements Comparable<Author> {
 	private String name;
