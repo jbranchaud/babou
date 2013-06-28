@@ -29,7 +29,7 @@ public class AuthorTest {
 	}
 
 	/**
-	 * Ensures 1 is returned if this author's name message is null.
+	 * Ensures 1 is returned if this author's name is null.
 	 */
 	@Test
 	public void compareTo_NullMessage() {
