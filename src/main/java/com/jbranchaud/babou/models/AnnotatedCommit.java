@@ -30,11 +30,15 @@ public class AnnotatedCommit implements Comparable<AnnotatedCommit> {
 	 */
 	@Override
 	public int compareTo(final AnnotatedCommit other) {
-		if (other == null) {
+		if (other == null || other.commitSummary == null) {
 			return -1; // Other AnnotatedCommit is null so this one comes before it
 		}
+		
+		if (this.commitSummary == null) {
+			return 1;
+		}
 
-		return this.commitSummary == null ? 1 : this.commitSummary.compareTo(other.commitSummary);
+		return this.commitSummary.compareTo(other.commitSummary);
 	}
 
 	/**
