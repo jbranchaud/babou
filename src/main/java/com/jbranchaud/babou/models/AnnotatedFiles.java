@@ -30,11 +30,15 @@ public class AnnotatedFiles implements Comparable<AnnotatedFiles> {
 	 */
 	@Override
 	public int compareTo(final AnnotatedFiles other) {
-		if (other == null) {
+		if (other == null || other.message == null) {
 			return -1; // Other AnnotatedFiles is null so this one comes before it
 		}
+		
+		if (this.message == null) {
+			return 1;
+		}
 
-		return this.message == null ? 1 : this.message.compareTo(other.message);
+		return this.message.compareTo(other.message);
 	}
 
 	/**

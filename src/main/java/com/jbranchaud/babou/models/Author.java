@@ -34,11 +34,15 @@ public class Author implements Comparable<Author> {
 	 */
 	@Override
 	public int compareTo(final Author other) {
-		if (other == null) {
+		if (other == null || other.name == null) {
 			return -1; // Other Author is null so this one comes before it
 		}
+		
+		if (this.name == null) {
+			return 1;
+		}
 
-		return this.name == null ? 1 : this.name.compareTo(other.name);
+		return this.name.compareTo(other.name);
 	}
 
 	/**
