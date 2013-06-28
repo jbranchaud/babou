@@ -4,8 +4,9 @@ package com.jbranchaud.babou.models;
  * Class that holds information about the commit author.
  * 
  * @author Dan Wiechert
+ * @author Josh Branchaud
  */
-public class Author {
+public class Author implements Comparable<Author> {
 	private String name;
 	private String email;
 
@@ -27,21 +28,17 @@ public class Author {
 		this.name = name;
 		this.email = email;
 	}
-	
-	/*
-	 * compare: Author -> boolean
-	 * 
-	 * given an Author object, this Author object will determine if the given
-	 * one is the same. If so, true is returned, otherwise, false is returned.
+
+	/**
+	 * Compares this name to the other name by using the {@link String#compareTo(String)} algorithm.
 	 */
-	public boolean compare(Author author) {
-		
-		if(!this.name.equals(author.getName())
-				|| !this.email.equals(author.getEmail())) {
-			return false;
+	@Override
+	public int compareTo(final Author other) {
+		if (other == null) {
+			return -1; // Other Author is null so this one comes before it
 		}
-		
-		return true;
+
+		return this.name == null ? 1 : this.name.compareTo(other.name);
 	}
 
 	/**

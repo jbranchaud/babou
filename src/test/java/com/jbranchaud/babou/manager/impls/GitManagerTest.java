@@ -13,7 +13,7 @@ import com.jbranchaud.babou.models.BabouChangeset;
 public class GitManagerTest {
 	@Test
 	public void test() {
-		final RepoManager manager = new GitManager("C:\\Users\\Dan\\git\\babou\\.git");
+		final RepoManager manager = new GitManager("");
 		final BabouChangeset changeset = manager.getChanges();
 		System.out.println(changeset);
 	}
