@@ -2,7 +2,7 @@ package com.jbranchaud.babou.models;
 
 import java.util.ArrayList;
 
-public class AnnotatedFiles {
+public class AnnotatedFiles implements Comparable<AnnotatedFiles> {
 
 	private String message;
 	
@@ -41,6 +41,15 @@ public class AnnotatedFiles {
 		}
 		
 		return true;
+	}
+
+	@Override
+	public int compareTo(AnnotatedFiles other) {
+		if (other == null) {
+			return -1; // Other AnnotatedFiles is null so this one comes before it
+		}
+		
+		return this.message == null ? 1 : this.message.compareTo(other.message);
 	}
 
 	public String getMessage() {

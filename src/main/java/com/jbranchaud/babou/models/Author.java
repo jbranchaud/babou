@@ -5,7 +5,7 @@ package com.jbranchaud.babou.models;
  * 
  * @author Dan Wiechert
  */
-public class Author implements Comparable<Author>{
+public class Author implements Comparable<Author> {
 	private String name;
 	private String email;
 
@@ -28,27 +28,16 @@ public class Author implements Comparable<Author>{
 		this.email = email;
 	}
 
+	/**
+	 * Compares this name to the other name by using the {@link String#compareTo(String)} algorithm.
+	 */
 	@Override
-	public int compareTo(Author other) {
+	public int compareTo(final Author other) {
 		if (other == null) {
 			return -1; // Other Author is null so this one comes before it
 		}
-		
-		int name, email;
-		
-		if (this.name == null) {
-			name = 1;
-		} else {
-			name = this.name.compareTo(other.name);
-		}
-		
-		if (this.email == null) {
-			email = 1;
-		} else {
-			email = this.email.compareTo(other.email);
-		}
-		
-		return name + email;
+
+		return this.name == null ? 1 : this.name.compareTo(other.name);
 	}
 
 	/**
