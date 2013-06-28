@@ -11,12 +11,6 @@ public class Author implements Comparable<Author> {
 	private String email;
 
 	/**
-	 * Default constructor.
-	 */
-	public Author() {
-	}
-
-	/**
 	 * Full constructor.
 	 * 
 	 * @param name

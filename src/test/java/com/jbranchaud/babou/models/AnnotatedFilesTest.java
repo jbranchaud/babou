@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class AnnotatedFilesTest {
 	/**
-	 * Ensures -1 is returned if the other annotated files is null.
+	 * Ensures -1 is returned if the other annotated files' is null.
 	 */
 	@Test
 	public void compareTo_NullOther() {
@@ -20,7 +20,7 @@ public class AnnotatedFilesTest {
 	}
 
 	/**
-	 * Ensures -1 is returned if the other annotated files message is null.
+	 * Ensures -1 is returned if the other annotated files' message is null.
 	 */
 	@Test
 	public void compareTo_NullOtherMessage() {
@@ -29,7 +29,7 @@ public class AnnotatedFilesTest {
 	}
 
 	/**
-	 * Ensures 1 is returned if this annotated files message is null.
+	 * Ensures 1 is returned if this annotated files' message is null.
 	 */
 	@Test
 	public void compareTo_NullMessage() {
